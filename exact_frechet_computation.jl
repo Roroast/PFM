@@ -1,5 +1,28 @@
 using JuMP, LinearAlgebra, CDDLib, Polyhedra
 
+function get_rss()
+    try
+        if Sys.islinux()
+            for line in eachline("/proc/self/status")
+                if startswith(line, "VmRSS:")
+                    parts = split(line)
+                    return parse(Int, parts[2]) * 1024 # KB to bytes
+                end
+            end
+        end
+    catch
+    end
+    return 0
+end
+
+function force_release_memory()
+    GC.gc()
+    if Sys.islinux()
+        # Force glibc to release free memory back to the OS
+        ccall(:malloc_trim, Int32, (Int32,), 0)
+    end
+end
+
 function lifted_Q(data::Matrix{Rational{BigInt}},alphas::Matrix{Int64})
 
     k=size(data,1);
@@ -41,7 +64,7 @@ end
 
 function Wolfe_FM_dimension(data::Matrix{Rational{BigInt}}, alphas::Matrix{Int64})
 
-    GC.gc()
+    force_release_memory()
     
     p = lifted_Q(data, alphas);
     
@@ -70,7 +93,7 @@ function Wolfe_FM_dimension(data::Matrix{Rational{BigInt}}, alphas::Matrix{Int64
     h = nothing
     FMset = nothing
 
-    GC.gc()
+    force_release_memory()
 
     return dimension
 
@@ -98,9 +121,14 @@ function Wolfe_experiment_runner(flat_idx::Int64, k_range::Vector{Int64}, n_rang
     data = nothing
     alphas = nothing
 
-    GC.gc()
+    force_release_memory()
 
-    #Don't return, save result to TMP?
+    # Recycle worker if memory usage is too high (e.g., > 5GB)
+    rss = get_rss()
+    if rss > 5 * 1024^3
+        println("Worker $(myid()) (PID $(getpid())) RSS: $(round(rss/1024^3, digits=2)) GB. Exceeded 5GB limit. Exiting for recycling.")
+        exit(0)
+    end
 end
 
 function solution_checker(data::Matrix{Rational{BigInt}}, alphas::Matrix{Int64}, FMset::CDDLib.Polyhedron{Rational{BigInt}}, theta::Vector{Rational{BigInt}}, optimum_distances::Vector{Rational{BigInt}})
@@ -126,7 +154,7 @@ function solution_checker(data::Matrix{Rational{BigInt}}, alphas::Matrix{Int64},
     subgradients = nothing
     total_subgradient = nothing
 
-    GC.gc()
+    force_release_memory()
 
 end
 
@@ -247,7 +275,7 @@ function lifted_wolfe(p::CDDLib.Polyhedron{Rational{BigInt}},n::Int64,k::Int64,s
     lambda = nothing
     y_coeffs = nothing
 
-    GC.gc()
+    force_release_memory()
 
     return x_t[1:n], x_t[n+1:end]
 

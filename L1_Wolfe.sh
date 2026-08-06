@@ -19,6 +19,7 @@ module load julia
 export JULIA_NUM_THREADS=1
 export JULIA_BLAS_NUM_THREADS=1
 export OMP_NUM_THREADS=1
+export MALLOC_TRIM_THRESHOLD_=131072
 
 echo "SLURM job $SLURM_JOB_ID on $(hostname)"
 echo "SLURM_CPUS_PER_TASK=$SLURM_CPUS_PER_TASK"
