@@ -25,18 +25,19 @@ To cite this work, please use the following bibtex:
 We formulate the Fr\'echet mean set via the constrained quadratic optimisation problem:
 
 $$
-  \text{minimise} \|\vec d\|^2_2, \quad \text{given} \forall i \leq n \text{ and } \vec a \in A , \, \vec a^\T(\vec x_i -  \bm \theta) \leq d_i,
+  \text{minimise } \Vert\vec d\Vert^2_2, \quad \text{given } \forall i \leq n \text{ and }\forall a \in A : \, a^{\top}( x_i -  \theta) \leq d_i,
 $$
-where $A$ is the set of normal vectors of the norm's unit ball and $X = \{ \vec x_1, \dots, \vec x_n\}$ is the dataset.
+
+where $A$ is the set of normal vectors of the norm's unit ball and $\{ x_1, \dots, x_n\}$ is the dataset.
 
 We then implement a variant of [Wolfe's combinatorial algorithm](https://link.springer.com/article/10.1007/BF01580381) to solve this problem exactly. For full technical details on our implementation, see ["On the Uniqueness of Fréchet Means for Polytope Norms"](https://arxiv.org/abs/2603.15785).
 
 The pipeline in `exact_frechet_computation.jl` is:
 
 1. **`lifted_Q`** — builds the feasible set from the data and the normal vectors, over `CDDLib` with exact rational arithmetic.
-2. **`lifted_wolfe`** — a **Wolfe-style minimum-norm-point algorithm** on the lifted polytope, using exact linear solvers. It returns the optimal distances and a minimiser \(x^*\).
+2. **`lifted_wolfe`** — a **Wolfe-style minimum-norm-point algorithm** on the lifted polytope, using exact linear solvers. It returns the optimal distances and a minimiser $x^*$.
 3. **`Wolfe_FM_dimension`** — computes the Fr\'echet mean set from the optimal distances, then computes the dimension of the resulting Fréchet mean set.
-4. **`solution_checker`** — asserts that \(x^*\) lies in the mean set, that the distances match, and that \(0\) lies in the convex hull of the active subgradients (the first-order optimality condition).
+4. **`solution_checker`** — asserts that $x^*$ lies in the mean set, that the distances match, and that $\mathbf 0$ lies in the convex hull of the active subgradients (the first-order optimality condition).
 
 ## Repository layout
 
