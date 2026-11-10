@@ -26,7 +26,7 @@ function distances_with_indices(data::Matrix{Rational{BigInt}}, theta::Vector{Ra
 end
 
 function precompute_linf_alphas(k::Int64)
-    return Rational.(vcat(Matrix(+I,k,k),Matrix(-I,k,k)));
+    return vcat(Matrix(+I,k,k),Matrix(-I,k,k));
 end
 
 function precompute_l1_alphas(k::Int64)
@@ -40,8 +40,6 @@ function precompute_tropical_alphas(k::Int64)
 end
 
 function Wolfe_FM_dimension(data::Matrix{Rational{BigInt}}, alphas::Matrix{Int64})
-
-    GC.gc()
     
     p = lifted_Q(data, alphas);
     
@@ -62,45 +60,34 @@ function Wolfe_FM_dimension(data::Matrix{Rational{BigInt}}, alphas::Matrix{Int64
 
     dimension = Polyhedra.dim(FMset)
 
-    start_distances = nothing
-    optimum_distances = nothing
-    theta = nothing
-    p = nothing
-    b = nothing
-    h = nothing
-    FMset = nothing
-
-    GC.gc()
-
     return dimension
 
 end
 
-function Wolfe_experiment_runner(flat_idx::Int64, k_range::Vector{Int64}, n_range::Vector{Int64}, reps::Int64, alphas_dict::Dict{Int64, Matrix{Int64}})
+function Wolfe_experiment_runner(flat_idx::Int64, k_range::Vector{Int64}, n_range::Vector{Int64}, r_range::Vector{Int64}, alphas_dict::Dict{Int64, Matrix{Int64}})
     
     # Convert flat index back to (k_id, n_id)
-    rep = div(flat_idx - 1, length(k_range)*length(n_range)) + 1
+    r_id = div(flat_idx - 1, length(k_range)*length(n_range)) + 1
     n_id = div(rem(flat_idx - 1, length(k_range)*length(n_range)), length(k_range)) + 1
     k_id = rem(flat_idx - 1, length(k_range)) + 1
     
+    rep = r_range[r_id]
     k = k_range[end - k_id + 1]
     n = n_range[end - n_id + 1]
 
     alphas = alphas_dict[k]
-    #res = 1000  # Set a default value for res if not provided
     
+    #TODO: try other distributions, uniform, norm radial etc....
     data = Rational{BigInt}.(randn(k, n))
+
+    start_time = time()
 
     dimension = Wolfe_FM_dimension(data, alphas)
 
-    println("k = $k, n = $n, rep = $rep, dim = $dimension")
+    end_time = time()
 
-    data = nothing
-    alphas = nothing
+    println("k = $k, n = $n, rep = $rep, dim = $dimension, time = $(round(end_time - start_time; digits=2)) seconds")
 
-    GC.gc()
-
-    #Don't return, save result to TMP?
 end
 
 function solution_checker(data::Matrix{Rational{BigInt}}, alphas::Matrix{Int64}, FMset::CDDLib.Polyhedron{Rational{BigInt}}, theta::Vector{Rational{BigInt}}, optimum_distances::Vector{Rational{BigInt}})
@@ -121,13 +108,6 @@ function solution_checker(data::Matrix{Rational{BigInt}}, alphas::Matrix{Int64},
 
     @assert in(zeros(Rational{BigInt}, k),total_subgradient) "data was $data, FMset was $FMset"
 
-    theta_distances = nothing
-    active_indices = nothing
-    subgradients = nothing
-    total_subgradient = nothing
-
-    GC.gc()
-
 end
 
 function lifted_wolfe(p::CDDLib.Polyhedron{Rational{BigInt}},n::Int64,k::Int64,start_distances::Matrix{Rational{BigInt}})
@@ -135,30 +115,32 @@ function lifted_wolfe(p::CDDLib.Polyhedron{Rational{BigInt}},n::Int64,k::Int64,s
     T = Rational{BigInt}
     total_dim = n+k
 
-    start_vertex = vcat(start_distances', zeros(T, k))
     model = GenericModel{T}(CDDLib.Optimizer{T})
-    @variable(model, v[i=1:total_dim], start = start_vertex[i])
+    @variable(model, v[i=1:total_dim], start = vcat(start_distances', zeros(T, k))[i])
     @constraint(model, v in p)
-
     grad = zeros(T,total_dim)
-    grad[1:n] = start_vertex[1:n]
+    grad[1:n] = start_distances
     @objective(model, Min, sum(grad.*v))
+
     optimize!(model)
     p_vertex = value.(v)
 
     cap = total_dim+1
-    C = zeros(T, total_dim, cap)
-    C[:,1] = start_vertex
+    C = hcat(p_vertex, zeros(T, total_dim, total_dim))
     m = 1
-    lambda = zeros(T,cap)
-    lambda[1] = 1
+    lambda = vcat(1, zeros(T,cap))
+    x_t = C[:,1:m] * lambda[1:m]
 
     ones_buf = ones(T,cap)
     G = zeros(T, 1, 1)
 
-    x_t = zeros(T,total_dim)
+    grad[1:n] = x_t[1:n]
+    set_objective_coefficient(model, v[1:n], grad[1:n])
+    optimize!(model)
+    p_vertex = value.(v)
 
-    while (dot(p_vertex,grad)) < (dot(grad,grad))
+
+    while dot(p_vertex[1:n],x_t[1:n]) < dot(x_t[1:n],x_t[1:n])
 
         m += 1
         C[:,m] = p_vertex
@@ -238,16 +220,6 @@ function lifted_wolfe(p::CDDLib.Polyhedron{Rational{BigInt}},n::Int64,k::Int64,s
     end
 
     @assert (p_vertex[1:n]'*x_t[1:n]) >= (x_t[1:n]'*x_t[1:n])
-
-    model = nothing
-    C = nothing
-    A = nothing
-    grad = nothing
-    p_vertex = nothing
-    lambda = nothing
-    y_coeffs = nothing
-
-    GC.gc()
 
     return x_t[1:n], x_t[n+1:end]
 

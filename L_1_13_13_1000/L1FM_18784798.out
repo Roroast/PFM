@@ -1,0 +1,160 @@
+SLURM job 18784798 on cn021.ham8.dur.ac.uk
+SLURM_CPUS_PER_TASK=1
+worker myid=2 pid=1437388 cpu=4
+worker myid=4 pid=1437392 cpu=5
+worker myid=3 pid=1437380 cpu=2
+worker myid=5 pid=1437384 cpu=3
+worker myid=7 pid=1437382 cpu=64
+worker myid=6 pid=1437395 cpu=8
+worker myid=1 pid=1437326 cpu=2
+worker myid=10 pid=1437386 cpu=65
+worker myid=8 pid=1437390 cpu=66
+worker myid=11 pid=1437394 cpu=67
+worker myid=9 pid=1437396 cpu=68
+Done setup in time 39.061277866363525
+Defined functions in time 54.272221088409424
+k = 4, n = 13, rep = 552, dim = 0, time = 23.17 seconds
+k = 3, n = 13, rep = 552, dim = 0, time = 0.08 seconds
+k = 2, n = 13, rep = 552, dim = 0, time = 0.04 seconds
+k = 5, n = 13, rep = 552, dim = 0, time = 23.39 seconds
+k = 6, n = 13, rep = 552, dim = 0, time = 23.68 seconds
+k = 7, n = 13, rep = 552, dim = 0, time = 24.5 seconds
+k = 8, n = 13, rep = 552, dim = 0, time = 26.58 seconds
+k = 9, n = 13, rep = 552, dim = 0, time = 33.28 seconds
+k = 9, n = 12, rep = 552, dim = 0, time = 7.86 seconds
+k = 7, n = 12, rep = 552, dim = 0, time = 1.03 seconds
+k = 6, n = 12, rep = 552, dim = 0, time = 0.43 seconds
+k = 5, n = 12, rep = 552, dim = 0, time = 0.25 seconds
+k = 4, n = 12, rep = 552, dim = 0, time = 0.09 seconds
+k = 3, n = 12, rep = 552, dim = 0, time = 0.07 seconds
+k = 2, n = 12, rep = 552, dim = 0, time = 0.15 seconds
+k = 8, n = 12, rep = 552, dim = 0, time = 3.59 seconds
+k = 10, n = 12, rep = 552, dim = 1, time = 22.72 seconds
+k = 10, n = 13, rep = 552, dim = 0, time = 50.2 seconds
+k = 10, n = 11, rep = 552, dim = 0, time = 12.54 seconds
+k = 9, n = 11, rep = 552, dim = 1, time = 5.64 seconds
+k = 8, n = 11, rep = 552, dim = 0, time = 2.75 seconds
+k = 7, n = 11, rep = 552, dim = 0, time = 1.02 seconds
+k = 6, n = 11, rep = 552, dim = 0, time = 0.26 seconds
+k = 5, n = 11, rep = 552, dim = 0, time = 0.3 seconds
+k = 4, n = 11, rep = 552, dim = 0, time = 0.09 seconds
+k = 3, n = 11, rep = 552, dim = 0, time = 0.05 seconds
+k = 2, n = 11, rep = 552, dim = 0, time = 0.04 seconds
+k = 11, n = 11, rep = 552, dim = 0, time = 61.86 seconds
+k = 11, n = 12, rep = 552, dim = 0, time = 88.75 seconds
+k = 11, n = 13, rep = 552, dim = 0, time = 133.86 seconds
+k = 10, n = 10, rep = 552, dim = 0, time = 19.95 seconds
+k = 9, n = 10, rep = 552, dim = 0, time = 5.53 seconds
+k = 8, n = 10, rep = 552, dim = 0, time = 1.9 seconds
+k = 7, n = 10, rep = 552, dim = 0, time = 0.78 seconds
+k = 11, n = 10, rep = 552, dim = 0, time = 49.21 seconds
+k = 6, n = 10, rep = 552, dim = 0, time = 0.62 seconds
+k = 5, n = 10, rep = 552, dim = 0, time = 0.16 seconds
+k = 3, n = 10, rep = 552, dim = 0, time = 0.05 seconds
+k = 4, n = 10, rep = 552, dim = 0, time = 0.09 seconds
+k = 2, n = 10, rep = 552, dim = 0, time = 0.04 seconds
+k = 12, n = 9, rep = 552, dim = 0, time = 126.46 seconds
+k = 12, n = 10, rep = 552, dim = 1, time = 183.23 seconds
+k = 10, n = 9, rep = 552, dim = 0, time = 12.06 seconds
+k = 9, n = 9, rep = 552, dim = 0, time = 3.52 seconds
+k = 12, n = 12, rep = 552, dim = 0, time = 285.2 seconds
+k = 7, n = 9, rep = 552, dim = 0, time = 0.49 seconds
+k = 8, n = 9, rep = 552, dim = 1, time = 1.66 seconds
+k = 6, n = 9, rep = 552, dim = 1, time = 0.39 seconds
+k = 5, n = 9, rep = 552, dim = 0, time = 0.09 seconds
+k = 4, n = 9, rep = 552, dim = 0, time = 0.08 seconds
+k = 2, n = 9, rep = 552, dim = 0, time = 0.04 seconds
+k = 3, n = 9, rep = 552, dim = 0, time = 0.04 seconds
+k = 12, n = 11, rep = 552, dim = 1, time = 282.1 seconds
+k = 11, n = 9, rep = 552, dim = 0, time = 31.95 seconds
+k = 12, n = 13, rep = 552, dim = 0, time = 321.44 seconds
+k = 9, n = 8, rep = 552, dim = 0, time = 3.54 seconds
+k = 8, n = 8, rep = 552, dim = 0, time = 1.09 seconds
+k = 7, n = 8, rep = 552, dim = 0, time = 0.32 seconds
+k = 6, n = 8, rep = 552, dim = 0, time = 0.31 seconds
+k = 5, n = 8, rep = 552, dim = 0, time = 0.09 seconds
+k = 4, n = 8, rep = 552, dim = 0, time = 0.06 seconds
+k = 3, n = 8, rep = 552, dim = 0, time = 0.04 seconds
+k = 2, n = 8, rep = 552, dim = 0, time = 0.03 seconds
+k = 10, n = 8, rep = 552, dim = 0, time = 10.22 seconds
+k = 11, n = 8, rep = 552, dim = 0, time = 31.0 seconds
+k = 11, n = 7, rep = 552, dim = 0, time = 19.55 seconds
+k = 10, n = 7, rep = 552, dim = 0, time = 6.79 seconds
+k = 9, n = 7, rep = 552, dim = 1, time = 2.19 seconds
+k = 8, n = 7, rep = 552, dim = 0, time = 0.55 seconds
+k = 7, n = 7, rep = 552, dim = 0, time = 0.53 seconds
+k = 6, n = 7, rep = 552, dim = 0, time = 0.14 seconds
+k = 5, n = 7, rep = 552, dim = 0, time = 0.09 seconds
+k = 4, n = 7, rep = 552, dim = 1, time = 0.06 seconds
+k = 3, n = 7, rep = 552, dim = 1, time = 0.04 seconds
+k = 2, n = 7, rep = 552, dim = 0, time = 0.03 seconds
+k = 12, n = 7, rep = 552, dim = 0, time = 63.38 seconds
+k = 12, n = 8, rep = 552, dim = 0, time = 115.22 seconds
+k = 12, n = 6, rep = 552, dim = 1, time = 57.55 seconds
+k = 11, n = 6, rep = 552, dim = 0, time = 28.82 seconds
+k = 9, n = 6, rep = 552, dim = 3, time = 1.4 seconds
+k = 8, n = 6, rep = 552, dim = 2, time = 0.87 seconds
+k = 7, n = 6, rep = 552, dim = 3, time = 0.19 seconds
+k = 6, n = 6, rep = 552, dim = 0, time = 0.07 seconds
+k = 5, n = 6, rep = 552, dim = 0, time = 0.03 seconds
+k = 4, n = 6, rep = 552, dim = 1, time = 0.02 seconds
+k = 3, n = 6, rep = 552, dim = 0, time = 0.01 seconds
+k = 2, n = 6, rep = 552, dim = 0, time = 0.04 seconds
+k = 10, n = 6, rep = 552, dim = 1, time = 7.65 seconds
+k = 13, n = 6, rep = 552, dim = 2, time = 127.32 seconds
+k = 11, n = 5, rep = 552, dim = 0, time = 22.06 seconds
+k = 10, n = 5, rep = 552, dim = 0, time = 5.6 seconds
+k = 9, n = 5, rep = 552, dim = 0, time = 1.76 seconds
+k = 8, n = 5, rep = 552, dim = 1, time = 0.34 seconds
+k = 7, n = 5, rep = 552, dim = 0, time = 0.13 seconds
+k = 6, n = 5, rep = 552, dim = 1, time = 0.07 seconds
+k = 5, n = 5, rep = 552, dim = 0, time = 0.02 seconds
+k = 4, n = 5, rep = 552, dim = 1, time = 0.25 seconds
+k = 3, n = 5, rep = 552, dim = 1, time = 0.13 seconds
+k = 2, n = 5, rep = 552, dim = 0, time = 0.01 seconds
+k = 12, n = 5, rep = 552, dim = 0, time = 79.54 seconds
+k = 13, n = 5, rep = 552, dim = 4, time = 92.43 seconds
+k = 11, n = 4, rep = 552, dim = 8, time = 8.46 seconds
+k = 12, n = 4, rep = 552, dim = 9, time = 19.3 seconds
+k = 9, n = 4, rep = 552, dim = 0, time = 1.17 seconds
+k = 8, n = 4, rep = 552, dim = 5, time = 0.75 seconds
+k = 7, n = 4, rep = 552, dim = 0, time = 0.14 seconds
+k = 6, n = 4, rep = 552, dim = 3, time = 0.04 seconds
+k = 5, n = 4, rep = 552, dim = 0, time = 0.02 seconds
+k = 4, n = 4, rep = 552, dim = 2, time = 0.05 seconds
+k = 3, n = 4, rep = 552, dim = 2, time = 0.0 seconds
+k = 2, n = 4, rep = 552, dim = 0, time = 0.0 seconds
+k = 10, n = 4, rep = 552, dim = 6, time = 3.18 seconds
+k = 13, n = 4, rep = 552, dim = 8, time = 50.94 seconds
+k = 11, n = 3, rep = 552, dim = 0, time = 17.82 seconds
+k = 10, n = 3, rep = 552, dim = 0, time = 3.76 seconds
+k = 9, n = 3, rep = 552, dim = 0, time = 1.5 seconds
+k = 8, n = 3, rep = 552, dim = 5, time = 0.15 seconds
+k = 7, n = 3, rep = 552, dim = 0, time = 0.1 seconds
+k = 6, n = 3, rep = 552, dim = 0, time = 0.04 seconds
+k = 5, n = 3, rep = 552, dim = 0, time = 0.02 seconds
+k = 4, n = 3, rep = 552, dim = 2, time = 0.01 seconds
+k = 3, n = 3, rep = 552, dim = 2, time = 0.0 seconds
+k = 2, n = 3, rep = 552, dim = 1, time = 0.0 seconds
+k = 12, n = 3, rep = 552, dim = 0, time = 61.59 seconds
+k = 12, n = 2, rep = 552, dim = 11, time = 10.96 seconds
+k = 11, n = 2, rep = 552, dim = 10, time = 6.01 seconds
+k = 10, n = 2, rep = 552, dim = 9, time = 0.86 seconds
+k = 9, n = 2, rep = 552, dim = 8, time = 0.72 seconds
+k = 8, n = 2, rep = 552, dim = 7, time = 0.14 seconds
+k = 7, n = 2, rep = 552, dim = 6, time = 0.05 seconds
+k = 6, n = 2, rep = 552, dim = 5, time = 0.02 seconds
+k = 5, n = 2, rep = 552, dim = 4, time = 0.01 seconds
+k = 4, n = 2, rep = 552, dim = 3, time = 0.0 seconds
+k = 3, n = 2, rep = 552, dim = 2, time = 0.0 seconds
+k = 2, n = 2, rep = 552, dim = 1, time = 0.0 seconds
+k = 13, n = 2, rep = 552, dim = 12, time = 39.56 seconds
+k = 13, n = 8, rep = 552, dim = 1, time = 361.13 seconds
+k = 13, n = 7, rep = 552, dim = 0, time = 353.61 seconds
+k = 13, n = 9, rep = 552, dim = 0, time = 627.91 seconds
+k = 13, n = 3, rep = 552, dim = 0, time = 265.48 seconds
+k = 13, n = 11, rep = 552, dim = 0, time = 1060.74 seconds
+k = 13, n = 10, rep = 552, dim = 0, time = 1102.46 seconds
+k = 13, n = 13, rep = 552, dim = 0, time = 1180.97 seconds
+k = 13, n = 12, rep = 552, dim = 0, time = 1257.99 seconds
+All done in time 1358.7168419361115

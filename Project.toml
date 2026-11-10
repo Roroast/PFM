@@ -1,0 +1,18 @@
+[deps]
+CDDLib = "3391f64e-dcde-5f30-b752-e11513730f60"
+Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+JLD = "4138dd39-2aa7-5051-a626-17a0bb65d9c8"
+JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+PProf = "e4faabce-9ead-11e9-39d9-4379958e3056"
+Polyhedra = "67491407-f73d-577b-9b50-8179a7c68029"
+ProfileView = "c46f51b8-102a-5cf2-8d2c-8597cb0e0da7"
+SlurmClusterManager = "c82cd089-7bf7-41d7-976b-6b5d413cbe0a"
+
+[compat]
+CDDLib = "0.8"
+Distributions = "0.25"
+JLD = "0.13"
+Polyhedra = "0.7"
+julia = "1.9"

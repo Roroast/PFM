@@ -1,0 +1,5 @@
+Precompiling project...
+[91m  ✗ [39m[90mGtkObservables[39m
+[91m  ✗ [39mProfileView
+  0 dependencies successfully precompiled in 44 seconds (174 already precompiled)
+  [91m2[39m dependencies errored. To see a full report either run `import Pkg; Pkg.precompile()` or load the packages

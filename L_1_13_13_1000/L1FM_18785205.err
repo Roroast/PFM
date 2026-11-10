@@ -1,0 +1,5 @@
+┌ Warning: Forcibly interrupting busy workers
+│   exception = rmprocs: pids [3, 4] not terminated after 5.0 seconds.
+└ @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/cluster.jl:1242
+┌ Warning: rmprocs: process 1 not removed
+└ @ Distributed /buildworker/worker/package_linux64/build/usr/share/julia/stdlib/v1.6/Distributed/src/cluster.jl:1038
